@@ -19,7 +19,8 @@ public class UserService {
     }
 
     public UserDto createUser(UserDto input) {
-        final User createdUser = User.builder()
+
+         User createdUser = User.builder()
                 .name(input.getName())
                 .surname(input.getSurname())
                 .email(input.getEmail())
@@ -27,10 +28,31 @@ public class UserService {
                 .alerting(input.isAlerting())
                 .energyAlertingThreshold(input.getEnergyAlertingThreshold())
                 .build();
-        final User savedUser = userRepository.save(createdUser);
+         // Save the created user to the database
+         User savedUser = userRepository.save(createdUser);
 
         return userMapper.toDto(savedUser);
+    }
 
+    public UserDto getUserById(Long id) {
+        return userRepository
+                .findById(id)
+                .map(userMapper::toDto)
+                .orElse(null);
+    }
+
+    public void updateUser(Long id, UserDto dto) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+        user.setName(dto.getName());
+        user.setSurname(dto.getSurname());
+        user.setEmail(dto.getEmail());
+        user.setAddress(dto.getAddress());
+        user.setAlerting(dto.isAlerting());
+        user.setEnergyAlertingThreshold(dto.getEnergyAlertingThreshold());
+
+        userRepository.save(user);
     }
 }
 
