@@ -442,6 +442,31 @@
             </ReqHistory>
           </value>
         </entry>
+        <entry key="17">
+          <value>
+            <ReqHistory>
+              <option name="body" value="{&#10;  &quot;name&quot;: &quot;lol&quot;,&#10;  &quot;surname&quot;: &quot;lool&quot;,&#10;  &quot;email&quot;: &quot;jarvis@example.com&quot;,&#10;  &quot;address&quot;: &quot;California, United States&quot;,&#10;  &quot;alerting&quot;: false,&#10;  &quot;energyAlertingThreshold&quot;: 0&#10;}" />
+              <option name="contentType" value="application/json" />
+              <option name="fileNames">
+                <array />
+              </option>
+              <option name="headers">
+                <map>
+                  <entry key="Content-Type" value="application/json" />
+                </map>
+              </option>
+              <option name="host" value="http://127.0.0.1:8080" />
+              <option name="id" value="17" />
+              <option name="method" value="POST" />
+              <option name="params">
+                <map />
+              </option>
+              <option name="res" value="{&quot;id&quot;:3,&quot;name&quot;:&quot;lol&quot;,&quot;surname&quot;:&quot;lool&quot;,&quot;email&quot;:&quot;jarvis@example.com&quot;,&quot;address&quot;:&quot;California, United States&quot;,&quot;alerting&quot;:false,&quot;energyAlertingThreshold&quot;:0.0}" />
+              <option name="time" value="2026-08-08 13:03:33" />
+              <option name="uri" value="/api/v1/user" />
+            </ReqHistory>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
