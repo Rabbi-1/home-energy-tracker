@@ -1,5 +1,6 @@
 package com.rabbi.deviceservice.entity;
 
+import com.rabbi.deviceservice.model.DeviceType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,12 +17,13 @@ public class Device {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
-    private String type;
+    private DeviceType type;
 
-    private String status;
     private String location;
+    private Long userId;
 }
