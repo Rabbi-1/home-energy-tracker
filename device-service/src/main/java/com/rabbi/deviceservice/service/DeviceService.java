@@ -46,7 +46,10 @@ public class DeviceService {
     }
 
     public void deleteDevice(Long id) {
-        // Implement the logic to delete a device by its ID
+        if (!deviceRepository.existsById(id)) {
+            throw new DeviceNotFoundException("Device not found with id: " + id);
+        }
+        deviceRepository.deleteById(id);
     }
 
     private DeviceDto toDto(Device device) {
