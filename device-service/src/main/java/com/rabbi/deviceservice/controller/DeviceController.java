@@ -3,10 +3,7 @@ package com.rabbi.deviceservice.controller;
 import com.rabbi.deviceservice.dto.DeviceDto;
 import com.rabbi.deviceservice.service.DeviceService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/devices")
@@ -22,5 +19,24 @@ public class DeviceController {
     @GetMapping("/{id}")
     public ResponseEntity<DeviceDto> getDeviceById(@PathVariable Long id) {
         DeviceDto deviceDto = deviceService.getDeviceById(id);
+        return ResponseEntity.ok(deviceDto);
     }
+    @PostMapping("/create")
+    public ResponseEntity<DeviceDto> createDevice(@RequestBody DeviceDto deviceDto) {
+        DeviceDto createdDevice = deviceService.createDevice(deviceDto);
+        return ResponseEntity.ok(createdDevice);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<DeviceDto> updateDevice(@PathVariable Long id, @RequestBody DeviceDto deviceDto) {
+        DeviceDto updatedDevice = deviceService.updateDevice(id, deviceDto);
+        return ResponseEntity.ok(updatedDevice);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteDevice(@PathVariable Long id) {
+        deviceService.deleteDevice(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
